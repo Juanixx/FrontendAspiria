@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "EjercicioAspiriaFront"
+    }
+  },
+  "defaultProject": "EjercicioAspiriaFront",
+  "cli": {
+    "analytics": false
+  }
 }
