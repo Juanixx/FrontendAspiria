@@ -1,5 +1,5 @@
+<button mat-button (click)="openProductDiaoliog()">Nuevo producto</button>
 <table mat-table [dataSource]="results" class="mat-elevation-z8">
-
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.position}} </td>

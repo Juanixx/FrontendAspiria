@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -7,10 +8,29 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<ProductComponent>) { }
+  productForm: FormGroup;
+  @Output() productAction = new EventEmitter<any>();
+  constructor(public dialogRef: MatDialogRef<ProductComponent>, private fb: FormBuilder) {
+    this.initProductForm();
+  }
 
   ngOnInit() {
+  }
+
+  initProductForm(){
+    this.productForm = this.fb.group({
+      nombre: ['', Validators.required],
+      descripcion: [''],
+      restriccionEdad: [''],
+      compania: ['', Validators.required],
+      precio: ['', Validators.required]
+    });
+  }
+
+  submitProduct(){
+    if(this.productForm.valid){
+      this.productAction.emit(this.productForm.value);
+    }
   }
 
 }
