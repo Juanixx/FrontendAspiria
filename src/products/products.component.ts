@@ -26,21 +26,34 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  eliminarProducto(){
-
+  eliminarProducto(producto: ProductModel){
+    this.productsService.deleteProduct(producto.id).subscribe(() => {
+      this.cargarProductos();
+    });
   }
 
-  editarproducto(){
-    
+  editarproducto(producto: ProductModel){
+    this.openProductDiaolog(producto);
   }
 
-  openProductDiaolog() {
+  openProductDiaolog(producto: ProductModel = null) {
     const dialogRef = this.dialog.open(ProductComponent, {
       width: '600px',
     });
 
-    dialogRef.componentInstance.productAction.subscribe(result => {
-      this.productsService.createProduct(result).subscribe(result => {
+    if(producto){
+      dialogRef.componentInstance.product = producto;
+    }
+
+    dialogRef.componentInstance.createProductAction.subscribe(result => {
+      this.productsService.createProduct(result).subscribe(() => {
+        this.cargarProductos();
+        dialogRef.close();
+      });
+    });
+
+    dialogRef.componentInstance.updateProductAction.subscribe(result => {
+      this.productsService.updateProduct(result).subscribe(() => {
         this.cargarProductos();
         dialogRef.close();
       });

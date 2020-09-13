@@ -20,7 +20,7 @@ export class ProductsService {
   }
 
   updateProduct(product: ProductModel) {
-    return this.http.put(this.url, product).pipe(map((response) => response));
+    return this.http.put(this.url + '/' + product.id, product).pipe(map((response) => response));
   }
 
   createProduct(product: ProductModel) {

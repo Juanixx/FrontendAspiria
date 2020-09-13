@@ -1,3 +1,4 @@
+import { ProductModel } from './../shared/models/ProductModel';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -9,12 +10,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ProductComponent implements OnInit {
   productForm: FormGroup;
-  @Output() productAction = new EventEmitter<any>();
+  product: ProductModel;
+  @Output() createProductAction = new EventEmitter<any>();
+  @Output() updateProductAction = new EventEmitter<any>();
   constructor(public dialogRef: MatDialogRef<ProductComponent>, private fb: FormBuilder) {
     this.initProductForm();
   }
 
   ngOnInit() {
+    if(this.product){
+      this.productForm.patchValue(this.product);
+    }
   }
 
   initProductForm(){
@@ -29,7 +35,7 @@ export class ProductComponent implements OnInit {
 
   submitProduct(){
     if(this.productForm.valid){
-      this.productAction.emit(this.productForm.value);
+      this.createProductAction.emit(this.productForm.value);
     }
   }
 

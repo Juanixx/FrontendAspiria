@@ -33,7 +33,7 @@
   <ng-container matColumnDef="deleteProduct">
     <th mat-header-cell *matHeaderCellDef> Eliminar </th>
     <td mat-cell *matCellDef="let element">
-       <button mat-icon-button color="warn">
+       <button (click)="eliminarProducto(element)" mat-icon-button color="warn">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -42,7 +42,7 @@
   <ng-container matColumnDef="editProduct">
     <th mat-header-cell *matHeaderCellDef> Editar </th>
     <td mat-cell *matCellDef="let element">
-       <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+       <button (click)="editarproducto(element)" mat-icon-button color="primary">
         <mat-icon>edit</mat-icon>
       </button>
     </td>
