@@ -1,3 +1,35 @@
-<p>
-  products works!
-</p>
+<table mat-table [dataSource]="results" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Descripción </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="restriccionEdad">
+    <th mat-header-cell *matHeaderCellDef> Restricción edad </th>
+    <td mat-cell *matCellDef="let element"> {{element.restriccionEdad}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="compania">
+    <th mat-header-cell *matHeaderCellDef> Compañía </th>
+    <td mat-cell *matCellDef="let element"> {{element.compania}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="precio">
+    <th mat-header-cell *matHeaderCellDef> Precio </th>
+    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
