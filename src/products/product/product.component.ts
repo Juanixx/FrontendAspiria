@@ -30,9 +30,9 @@ export class ProductComponent implements OnInit {
       id:['0'],
       nombre: ['', Validators.required],
       descripcion: [''],
-      restriccionEdad: [''],
+      restriccionEdad: ['', [Validators.min(0), Validators.max(100)]],
       compania: ['', Validators.required],
-      precio: ['', Validators.required]
+      precio: ['', [Validators.required, Validators.min(1), Validators.max(1000)]]
     });
   }
 

@@ -15,9 +15,10 @@
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>Restricción edad</mat-label>
-      <input formControlName="restriccionEdad" matInput #restriccion maxlength="50" placeholder="Restricción">
+      <input formControlName="restriccionEdad" matInput #restriccion type="number" min="0" max="100" maxlength="50" placeholder="Restricción">
       <mat-hint align="start"><strong>Restricción de edad</strong> </mat-hint>
-      <mat-hint align="end">{{restriccion.value.length}} / 50</mat-hint>
+      <mat-hint align="end">{{restriccion.value}} / 100</mat-hint>
+      <mat-error>La edad debe de ser entre 0 y 100</mat-error>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>Compañía</mat-label>
@@ -29,7 +30,8 @@
       <mat-label>Precio</mat-label>
       <input formControlName="precio" matInput #precio maxlength="50" placeholder="Precio del producto">
       <mat-hint align="start"><strong>Precio del producto</strong> </mat-hint>
-      <mat-hint align="end">{{precio.value.length}} / 100</mat-hint>
+      <mat-hint align="end">{{precio.value}} / 1000</mat-hint>
+      <mat-error>El precio debe de ser entre 1 y 1000</mat-error>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
