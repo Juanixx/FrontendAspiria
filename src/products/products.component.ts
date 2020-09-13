@@ -11,22 +11,30 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsComponent implements OnInit {
   results: Array<ProductModel>;
-  displayedColumns: string[] = ['nombre', 'descripcion', 'restriccionEdad', 'compania', 'precio'];
+  displayedColumns: string[] = ['position', 'nombre', 'descripcion', 'restriccionEdad', 'compania', 'precio', 'deleteProduct', 'editProduct'];
 
   constructor(private productsService: ProductsService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.cargarProductos();
   }
-  
-  cargarProductos(){
+
+  cargarProductos() {
     this.productsService.getProducts().subscribe(result => {
       this.results = result as Array<ProductModel>;
       console.log('results => ' + result);
     });
   }
 
-  openProductDiaoliog(){
+  eliminarProducto(){
+
+  }
+
+  editarproducto(){
+    
+  }
+
+  openProductDiaolog() {
     const dialogRef = this.dialog.open(ProductComponent, {
       width: '600px',
     });
