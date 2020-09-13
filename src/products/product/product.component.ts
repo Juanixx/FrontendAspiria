@@ -1,5 +1,6 @@
+import { CrudMode } from '../../shared/enums/crud.mode'
 import { ProductModel } from './../shared/models/ProductModel';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -11,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ProductComponent implements OnInit {
   productForm: FormGroup;
   product: ProductModel;
+  crudMode: CrudMode;
   @Output() createProductAction = new EventEmitter<any>();
   @Output() updateProductAction = new EventEmitter<any>();
   constructor(public dialogRef: MatDialogRef<ProductComponent>, private fb: FormBuilder) {
@@ -18,13 +20,14 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.product){
+    if (this.product) {
       this.productForm.patchValue(this.product);
     }
   }
 
-  initProductForm(){
+  initProductForm() {
     this.productForm = this.fb.group({
+      id:['0'],
       nombre: ['', Validators.required],
       descripcion: [''],
       restriccionEdad: [''],
@@ -33,9 +36,14 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  submitProduct(){
-    if(this.productForm.valid){
-      this.createProductAction.emit(this.productForm.value);
+  submitProduct() {
+    if (this.productForm.valid) {
+      if (this.crudMode === CrudMode.create) {
+        this.createProductAction.emit(this.productForm.value);
+      }
+      if (this.crudMode === CrudMode.edit) {
+        this.updateProductAction.emit(this.productForm.value);
+      }
     }
   }
 

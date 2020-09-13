@@ -1,3 +1,4 @@
+import { CrudMode } from '../shared/enums/crud.mode';
 import { ProductComponent } from './product/product.component';
 import { ProductModel } from './shared/models/ProductModel';
 import { ProductsService } from './shared/services/products.service';
@@ -22,7 +23,6 @@ export class ProductsComponent implements OnInit {
   cargarProductos() {
     this.productsService.getProducts().subscribe(result => {
       this.results = result as Array<ProductModel>;
-      console.log('results => ' + result);
     });
   }
 
@@ -38,13 +38,14 @@ export class ProductsComponent implements OnInit {
 
   openProductDiaolog(producto: ProductModel = null) {
     const dialogRef = this.dialog.open(ProductComponent, {
-      width: '600px',
+      width: '600px'
     });
 
     if(producto){
       dialogRef.componentInstance.product = producto;
     }
 
+    dialogRef.componentInstance.crudMode = producto != null ? CrudMode.edit : CrudMode.create;
     dialogRef.componentInstance.createProductAction.subscribe(result => {
       this.productsService.createProduct(result).subscribe(() => {
         this.cargarProductos();
