@@ -1,3 +1,4 @@
+import { Images } from './../shared/constants/images';
 import { ModalContents } from './../shared/constants/modal-contents';
 import { ConfirmDialogComponent } from './../shared/components/confirm-dialog/confirm-dialog.component';
 import { CrudMode } from '../shared/enums/crud.mode';
@@ -14,12 +15,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsComponent implements OnInit {
   results: Array<ProductModel>;
-  displayedColumns: string[] = ['position', 'nombre', 'descripcion', 'restriccionEdad', 'compania', 'precio', 'deleteProduct', 'editProduct'];
+  images: Array<string>;
+  displayedColumns: string[] = ['position', 'nombre', 'imageUrl', 'descripcion', 'restriccionEdad', 'compania', 'precio', 'deleteProduct', 'editProduct'];
 
   constructor(private productsService: ProductsService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.cargarProductos();
+    this.createImgsArray();
   }
 
   cargarProductos() {
@@ -71,5 +74,11 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  
+  get randomImage(){
+    return this.images[Math.floor(Math.random() * this.images.length)]
+  }
+
+  createImgsArray(){
+    this.images = [ Images.img1, Images.img2, Images.img3, Images.img4, Images.img4, Images.img5];
+  }
 }
