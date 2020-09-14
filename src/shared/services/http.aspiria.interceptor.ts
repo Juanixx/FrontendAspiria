@@ -26,20 +26,6 @@ export class HttpAspiriaInterceptor implements HttpInterceptor {
   }
 
   handleError(error: HttpErrorResponse) {
-    if (error.error && error.error.message) {
-      const errorModel = error.error as ErrorModel;
-      this.openModal(errorModel);
-
-    } else {
-      let errorModel = new ErrorModel();
-      errorModel.message = error.message;
-      errorModel.statusCode = error.status.toString();
-      this.openModal(errorModel);
-    }
-  }
-
-  openModal(error: ErrorModel) {
-    // const modalRef = this.modalService.open(ErrorModalComponent, { size: 'lg', backdrop: 'static' });
-    // modalRef.componentInstance.error = error;
+    console.log('Ha ocurrido un error: ', error.message);
   }
 }

@@ -28,6 +28,10 @@ export class ProductsComponent implements OnInit {
   cargarProductos() {
     this.productsService.getProducts().subscribe(result => {
       this.results = result as Array<ProductModel>;
+      this.results.map(producto =>{
+        producto.imageUrl = this.randomImage;
+        return producto;
+      })
     });
   }
 

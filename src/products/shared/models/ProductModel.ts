@@ -5,4 +5,5 @@ export class ProductModel {
     restriccionEdad: number;
     compania: string;
     precio: number;
+    imageUrl: string;
 }
