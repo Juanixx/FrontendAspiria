@@ -1,3 +1,5 @@
+import { ModalContents } from './../shared/constants/modal-contents';
+import { ConfirmDialogComponent } from './../shared/components/confirm-dialog/confirm-dialog.component';
 import { CrudMode } from '../shared/enums/crud.mode';
 import { ProductComponent } from './product/product.component';
 import { ProductModel } from './shared/models/ProductModel';
@@ -27,18 +29,26 @@ export class ProductsComponent implements OnInit {
   }
 
   eliminarProducto(producto: ProductModel){
-    this.productsService.deleteProduct(producto.id).subscribe(() => {
-      this.cargarProductos();
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {tittle: ModalContents.DeleteProduct.tittle, message: ModalContents.DeleteProduct.message}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.productsService.deleteProduct(producto.id).subscribe(() => {
+          this.cargarProductos();
+        });
+      }
     });
   }
 
   editarproducto(producto: ProductModel){
-    this.openProductDiaolog(producto);
+    this.openProductDialog(producto);
   }
 
-  openProductDiaolog(producto: ProductModel = null) {
+  openProductDialog(producto: ProductModel = null) {
     const dialogRef = this.dialog.open(ProductComponent, {
-      width: '600px'
+      width: '500px'
     });
 
     if(producto){
@@ -60,4 +70,6 @@ export class ProductsComponent implements OnInit {
       });
     });
   }
+
+  
 }

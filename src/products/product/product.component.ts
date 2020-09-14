@@ -1,6 +1,6 @@
 import { CrudMode } from '../../shared/enums/crud.mode'
 import { ProductModel } from './../shared/models/ProductModel';
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -46,5 +46,4 @@ export class ProductComponent implements OnInit {
       }
     }
   }
-
 }

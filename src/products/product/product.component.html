@@ -1,41 +1,47 @@
 <form [formGroup]="productForm" (ngSubmit)="submitProduct()">
-  <h2 align="center" mat-dialog-title>Nuevo producto</h2>
-  <mat-dialog-content class="mat-typography">
-    <mat-form-field class="full-width">
-      <mat-label>Nombre</mat-label>
-      <input formControlName="nombre" matInput #nombre maxlength="50" placeholder="Nombre">
-      <mat-hint align="start"><strong>Nombre del producto</strong> </mat-hint>
-      <mat-hint align="end">{{nombre.value.length}} / 50</mat-hint>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Descripcion</mat-label>
-      <input formControlName="descripcion" matInput #descripcion maxlength="100" placeholder="Descripción">
-      <mat-hint align="start"><strong>Descripción del producto</strong> </mat-hint>
-      <mat-hint align="end">{{descripcion.value.length}} / 100</mat-hint>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Restricción edad</mat-label>
-      <input formControlName="restriccionEdad" matInput #restriccion type="number" min="0" max="100" maxlength="50" placeholder="Restricción">
-      <mat-hint align="start"><strong>Restricción de edad</strong> </mat-hint>
-      <mat-hint align="end">{{restriccion.value}} / 100</mat-hint>
-      <mat-error>La edad debe de ser entre 0 y 100</mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Compañía</mat-label>
-      <input formControlName="compania" matInput #compania maxlength="50" placeholder="Escribe lo que piensas">
-      <mat-hint align="start"><strong>Compañía del producto</strong> </mat-hint>
-      <mat-hint align="end">{{compania.value.length}} / 50</mat-hint>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Precio</mat-label>
-      <input formControlName="precio" matInput #precio maxlength="50" placeholder="Precio del producto">
-      <mat-hint align="start"><strong>Precio del producto</strong> </mat-hint>
-      <mat-hint align="end">{{precio.value}} / 1000</mat-hint>
-      <mat-error>El precio debe de ser entre 1 y 1000</mat-error>
-    </mat-form-field>
-  </mat-dialog-content>
-  <mat-dialog-actions align="center">
-    <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" cdkFocusInitial>Guardar</button>
-  </mat-dialog-actions>
+  <div class="container-fluid">
+    <div class="row justify-content-between">
+      <div class="col-12">
+        <h2 align="center" mat-dialog-title>Producto Aspiria</h2>
+        <mat-dialog-content class="mat-typography dialog-content mat-form-field--inline">
+          <mat-form-field class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput #nombre maxlength="50" placeholder="Nombre">
+            <mat-hint align="start"><strong>Nombre del producto</strong> </mat-hint>
+            <mat-hint align="end">{{nombre.value.length}} / 50</mat-hint>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Restricción edad</mat-label>
+            <input formControlName="restriccionEdad" matInput #restriccion type="number" min="0" max="100" placeholder="Restricción">
+            <mat-hint align="start"><strong>Restricción de edad</strong> </mat-hint>
+            <mat-hint align="end">{{restriccion.value}} / 100</mat-hint>
+            <mat-error>La edad debe de ser entre 0 y 100</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Compañía</mat-label>
+            <input formControlName="compania" matInput #compania maxlength="50" placeholder="Escribe lo que piensas">
+            <mat-hint align="start"><strong>Compañía del producto</strong> </mat-hint>
+            <mat-hint align="end">{{compania.value.length}} / 50</mat-hint>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Precio</mat-label>
+            <input formControlName="precio" matInput #precio maxlength="1000" placeholder="Precio del producto">
+            <mat-hint align="start"><strong>Precio del producto</strong> </mat-hint>
+            <mat-hint align="end">{{precio.value}} / 1000</mat-hint>
+            <mat-error>El precio debe de ser entre 1 y 1000</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Descripcion</mat-label>
+            <textarea style="min-height: 35px; overflow-y: hidden;" formControlName="descripcion" matInput #descripcion maxlength="100" placeholder="Descripción"></textarea>
+            <mat-hint align="start"><strong>Descripción del producto</strong> </mat-hint>
+            <mat-hint align="end">{{descripcion.value.length}} / 100</mat-hint>
+          </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="center" class="acciones">
+          <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+          <button mat-raised-button color="primary" type="submit" cdkFocusInitial>Guardar</button>
+        </mat-dialog-actions>
+      </div>
+    </div>
+  </div>
 </form>

@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../shared/components/confirm-dialog/confirm-dialog.component';
 import { ProductComponent } from './../products/product/product.component';
 import { HttpAspiriaInterceptor } from '../shared/services/http.aspiria.interceptor';
 import { ProductsComponent } from './../products/products.component';
@@ -19,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     AppComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
